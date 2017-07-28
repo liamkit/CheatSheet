@@ -29,4 +29,28 @@ minimal bootable ArchLinux.
 # pacman -S grub
 # grub-install --recheck /dev/sda
 # grub-mkconfig -o /boot/grub/grub.cfg
+# exit
+# reboot
 ```
+
+## Network
+Network is essential these days. You'll need the name of your ethernet interface, e.g. eth0.
+Use ip addr to find the name.  To install dhcp client:
+
+```
+# echo {hostname} > /etc/hostname
+# hostname {hostname}
+# cd /etc/netctl
+# sed -e "s@{eth0}@ens33@" examples/ethernet-dhcp > ethernet-dhcp
+# netctl enable ethernet-dhcp
+# netctl start ethernet-dhcp
+
+# pacman -S openssh
+# systemctl enable sshd
+```
+
+
+
+## Useful Commands
+
++ pacman -Q - query package database
