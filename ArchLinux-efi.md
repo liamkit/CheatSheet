@@ -19,7 +19,11 @@ Once boot, ArchLinux is running off the iso image. This step installs a
 minimal bootable ArchLinux.
 
 ```
-# parted /dev/sda mklabel gpt mkpart ESP fat32 1MiB 513MiB mkpart primary ext4 513MiB 100%
+# parted /dev/sda
+(parted) mklabel gpt
+(parted) mkpart ESP fat32 1MiB 513MiB
+(parted) mkpart primary ext4 513MiB 100%
+(parted) set 1 boot on
 # mkfs.fat -F32 /dev/sda1
 # mkfs.ext4 /dev/sda2
 
@@ -27,7 +31,7 @@ minimal bootable ArchLinux.
 # mkdir /mnt/boot
 # mount /dev/sda1 /mnt/boot
 
-# pacstrap -i /mnt base
+# pacstrap /mnt base
 # genfstab -U /mnt > /mnt/etc/fstab
 # arch-chroot /mnt /bin/bash
 
