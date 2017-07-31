@@ -1,7 +1,8 @@
-# ArchLinux Installation Cheat Sheet *NOT COMPLETED*
+# ArchLinux Installation Cheat Sheet
 
-Cheat sheet to install ArchLinux on a VMWare Fusion VM using EFI. This guide
-does the minimal to create a bootable VM.
+Cheat sheet to install ArchLinux on a VMWare Fusion VM using
+EFI. Compare to normal installation, The only different is in
+grub-install. This guide does the minimal to create a bootable VM.
 
 
 ## Booting
@@ -35,26 +36,23 @@ minimal bootable ArchLinux.
 # genfstab -U /mnt > /mnt/etc/fstab
 # arch-chroot /mnt /bin/bash
 
-# pacman -S refind-efi
-# cp /usr/share/refind/refind_x64.efi /boot/EFI/Boot/bootx64.efi
-# cp -r /usr/share/refind/drivers_x64 /boot/EFI/Boot/
+# pacman -S grub efibootmgr
+# grub-install --efi-directory=/boot --recheck /dev/sda
+# grub-mkconfig -o /boot/grub/grub.cfg
 # exit
 # reboot
 ```
 
 
 
+## Basic
+The following is not required for booting but something you probably would want to do after first boot:
 
-
-
-
-
-
-
-
-
-
-
-
-[https://wiki.archlinux.org/index.php/User:Soloturn/Quick_Installation_guide_UEFI]
-
+# echo {hostname} > /etc/hostname
+# cd /etc/netctl; sed -e "s@eth0@{etherinterface}@" examples/ethernet-dhcp > {etherinterface}
+# netctl enable {etherinterface}
+# netctl start {etherinterface}
+# pacman -S openssh
+# systemctl enable sshd.service
+# useradd {somebody}
+# passwd {somebody}
