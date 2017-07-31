@@ -48,6 +48,7 @@ minimal bootable ArchLinux.
 ## Basic
 The following is not required for booting but something you probably would want to do after first boot:
 
+```
 # pacman -S openssh net-tools sudo
 # echo {hostname} > /etc/hostname
 # cd /etc/netctl; sed -e "s@eth0@{etherinterface}@" examples/ethernet-dhcp > {etherinterface}
@@ -57,3 +58,4 @@ The following is not required for booting but something you probably would want 
 # useradd {somebody}
 # passwd {somebody}
 # mkdir /home/{somebody}; chown {somebody}:{somebody} /home/{somebody}
+```
