@@ -33,7 +33,7 @@ minimal bootable ArchLinux.
 # mount /dev/sda1 /mnt/boot
 
 # pacstrap /mnt base
-# genfstab -U /mnt > /mnt/etc/fstab
+# genfstab -U /mnt >> /mnt/etc/fstab
 # arch-chroot /mnt /bin/bash
 
 # pacman -S grub efibootmgr
@@ -48,11 +48,12 @@ minimal bootable ArchLinux.
 ## Basic
 The following is not required for booting but something you probably would want to do after first boot:
 
+# pacman -S openssh net-tools sudo
 # echo {hostname} > /etc/hostname
 # cd /etc/netctl; sed -e "s@eth0@{etherinterface}@" examples/ethernet-dhcp > {etherinterface}
 # netctl enable {etherinterface}
 # netctl start {etherinterface}
-# pacman -S openssh
 # systemctl enable sshd.service
 # useradd {somebody}
 # passwd {somebody}
+# mkdir /home/{somebody}; chown {somebody}:{somebody} /home/{somebody}
