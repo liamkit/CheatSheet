@@ -49,11 +49,11 @@ minimal bootable ArchLinux.
 The following is not required for booting but something you probably would want to do after first boot:
 
 ```
-# pacman -S openssh net-tools sudo
 # echo {hostname} > /etc/hostname
 # cd /etc/netctl; sed -e "s@eth0@{etherinterface}@" examples/ethernet-dhcp > {etherinterface}
 # netctl enable {etherinterface}
 # netctl start {etherinterface}
+# pacman -S openssh net-tools sudo
 # systemctl enable sshd.service
 # useradd {somebody}
 # passwd {somebody}
