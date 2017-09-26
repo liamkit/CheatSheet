@@ -7,6 +7,7 @@ Install some useful software over base Archlinux.
 # pacman -S sudo
 # pacman -S openntpd
 # pacman -S openssh
+# pacman -S wget
 # systemctl enable sshd.service
 
 # pacman -S xorg-server
@@ -20,4 +21,8 @@ Install some useful software over base Archlinux.
 # pacman -S polkit
 # echo "exec startlxde" > ~/.xinitrc
 # startx -- -retro
+
+# pacman -S open-vm-tools
+# systemctl enable vmware-vmblock-fuse.service
+# systemctl enable vmtoolsd.service
 ```
